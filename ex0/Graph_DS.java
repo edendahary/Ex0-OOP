@@ -19,27 +19,12 @@ public class Graph_DS implements graph {
         }
         return null;
     }
-//        node_data nodeData = null;
-//        for(node_data cur : this.nodeDataList) {
-//            if(cur.getKey() == key) {
-//                nodeData = cur;
-//                break;
-//            }
-//        }
-//        return nodeData;
- //   }
 
     @Override
     public boolean hasEdge(int node1, int node2) {
        node_data curr = this.MapNode.get(node1);
        return curr.getNi().contains(this.MapNode.get(node2));
     }
-//        node_data cur = getNode(node1);
-//        if(cur!= null && cur.hasNi(node2)==true){
-//            return true;
-//        }
-//        return false;
-//    }
 
     @Override
     public void addNode(node_data n) {
@@ -48,8 +33,7 @@ public class Graph_DS implements graph {
             MC++;
         }
     }
-//        this.nodeDataList.add(n);
-//    }
+
 
     @Override
     public void connect(int node1, int node2) {
@@ -61,18 +45,7 @@ public class Graph_DS implements graph {
             }
         }
     }
-//        if(node1!=node2 ) {
-//            node_data cur = getNode(node1);
-//            node_data cur1 = getNode(node2);
-//            if (cur != null && cur1 != null) {
-//                if (cur.hasNi(cur1.getKey()) == false) {
-//                    cur.addNi(cur1);
-//                    ES++;
-//
-//                }
-//            }
-//        }
-//    }
+
 
     @Override
     public Collection<node_data> getV() {
@@ -86,9 +59,7 @@ public class Graph_DS implements graph {
         return this.MapNode.get(node_id).getNi();
     }
 
-//        node_data cur = getNode(node_id);
-//        return cur.getNi();
-//    }
+
 
     @Override
     public node_data removeNode(int key) {
@@ -105,21 +76,7 @@ public class Graph_DS implements graph {
         return nodeDataToRemove;
     }
 
-//        node_data nodeDataToRemove = getNode(key);
-//
-//
-//        if(nodeDataToRemove == null) {
-//            return null;
-//        }else{
-//            for(node_data cur : nodeDataToRemove.getNi()){
-//                cur.removeNode(nodeDataToRemove);
-//                ES--;
-//            }
-//            this.nodeDataList.remove(nodeDataToRemove);
-//            return nodeDataToRemove;
-//        }
-//
-//    }
+
 
     @Override
     public void removeEdge(int node1, int node2) {
@@ -130,15 +87,7 @@ public class Graph_DS implements graph {
             MC++;
         }
     }
-//        node_data curr = this.getNode(node1);
-//        if(curr.hasNi(node2)==true){
-//            node_data EdgetoRemove= this.getNode(node2);
-//            curr.getNi().remove(EdgetoRemove);
-//            EdgetoRemove.getNi().remove(curr);
-//            ES--;
-//
-//        }
-//    }
+
 
     @Override
     public int nodeSize() {
