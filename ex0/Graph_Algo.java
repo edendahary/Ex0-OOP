@@ -63,7 +63,6 @@ public class Graph_Algo implements graph_algorithms {
         {
             // Dequeue a vertex from queue and print it
             s = queue.poll();
-            //System.out.print(s.getKey()+" ");
 
             // Get all adjacent vertices of the dequeued vertex s
             // If a adjacent has not been visited, then mark it
@@ -99,45 +98,40 @@ public class Graph_Algo implements graph_algorithms {
     boolean BFS(node_data s)
     {
         if(s==null){return true;}
+        // Mark all the nodes as false
         for (node_data curr: this.graph.getV()){
             curr.setInfo("false");
         }
-        // Mark all the vertices as not visited(By default
-        // set as false)
-
-
         // Create a queue for BFS
         LinkedList<node_data> queue = new LinkedList<>();
 
-        // Mark the current node as visited and enqueue it
+        // Mark the current node as true and enqueue it
         s.setInfo("true");
 
         queue.add(s);
 
         while (queue.size() != 0)
         {
-            // Dequeue a vertex from queue and print it
+            // Dequeue a vertex from queue
             s = queue.poll();
-
-
             // Get all adjacent vertices of the dequeued vertex s
-            // If a adjacent has not been visited, then mark it
-            // visited and enqueue it
+            // If a adjacent has false value, then mark it
+            // as true and enqueue it
             node_data curr = s;
             Iterator<node_data> i =curr.getNi().iterator();
             while (i.hasNext())
             {
                 node_data n = i.next();
-
                 if(n.getInfo().equals("false"))
                 {
-
+                    //if the current node not visited mark him as true and add to the queue
                     n.setInfo("true");
 
                     queue.add(n);
                 }
             }
         }
+        //check if there is a node with false value
         for (node_data curr: this.graph.getV()){
            if(!curr.getInfo().equals("true")){
                return false;
@@ -157,13 +151,8 @@ public class Graph_Algo implements graph_algorithms {
         for (node_data curr: this.graph.getV()){
             curr.setInfo("false");
         }
-        // Mark all the vertices as not visited(By default
-        // set as false)
 
-        // Create a queue for BFS
         LinkedList<node_data> queue = new LinkedList<>();
-
-        // Mark the current node as visited and enqueue it
         s.setInfo("true");
         Dis[s.getKey()%graph.nodeSize()]=0;
         Parent[s.getKey()%graph.nodeSize()]=null;
@@ -171,13 +160,11 @@ public class Graph_Algo implements graph_algorithms {
 
         while (queue.size() != 0)
         {
-            // Dequeue a vertex from queue and print it
+            // Dequeue a vertex from queue
             s = queue.poll();
-            //System.out.print(s.getKey()+" ");
-
             // Get all adjacent vertices of the dequeued vertex s
-            // If a adjacent has not been visited, then mark it
-            // visited and enqueue it
+            // If a adjacent has false value, then mark it
+            // as true and enqueue it
             node_data curr = s;
             Iterator<node_data> i =curr.getNi().iterator();
             while (i.hasNext())
@@ -192,6 +179,7 @@ public class Graph_Algo implements graph_algorithms {
                 }
             }
         }
+        //check if the dest node as been visited
         if(this.graph.getNode(dest).getInfo().equals("false")){
             return -1;
         }
