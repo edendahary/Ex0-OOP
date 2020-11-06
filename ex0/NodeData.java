@@ -4,38 +4,41 @@ import java.util.Collection;
 import java.util.HashMap;
 
 public class NodeData implements node_data {
-   // Collection<node_data> Neighbors = new ArrayList<>();
     static int k=0;
     private int Tag,key;
     private String Info ;
     HashMap<Integer,node_data> ni;
 
+
+     // create a new node with a unique key
     public NodeData(){
         this.key=k++;
         ni=new HashMap<Integer,node_data>();
 
     }
 
+
     @Override
     public int getKey() {
         return this.key;
     }
 
+
+     //return the neighbors for the nodes
     @Override
     public Collection<node_data> getNi() {
         return this.ni.values();
     }
 
+
+     // return  if he contains the neighbor key retrun true else false
     @Override
     public boolean hasNi(int key) {
-//        for(node_data cur : this.ni.values())
-//            if(cur.getKey() == key){
-//                return true;
-//            }
-//        return false;
         return ni.containsKey(key);
     }
 
+
+     // add the node t to its neighbors
     @Override
     public void addNi(node_data t) {
         this.ni.put(t.getKey(),t);
@@ -44,6 +47,8 @@ public class NodeData implements node_data {
         }
     }
 
+
+    // remove the given node from his neighbors
     @Override
     public void removeNode(node_data node) {
         if(this.hasNi(node.getKey())== true){
@@ -70,23 +75,4 @@ public class NodeData implements node_data {
     public void setTag(int t) {
         this.Tag=t;
     }
-
-
-    //    public static void main(String[] args) {
-//        NodeData a = new NodeData();
-//        NodeData b = new NodeData();
-//        NodeData c = new NodeData();
-//        NodeData d;
-//        System.out.println(a.getKey());
-//        System.out.println(a.getNi());
-//        a.addNi(b);
-//        a.addNi(c);
-//        for(node_data cur : a.getNi()){
-//            System.out.print(cur.getKey()+",");
-//        }
-//        System.out.println();
-//        System.out.println(a.hasNi(1));
-//        a.removeNode(c);
-//
-//    }
 }
